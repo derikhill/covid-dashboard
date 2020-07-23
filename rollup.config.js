@@ -3,8 +3,26 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import path  from 'path';
+import postcss from 'rollup-plugin-postcss';
 
 const production = !process.env.ROLLUP_WATCH;
+const postcssOptions = () => ({
+	extensions: ['.scss', '.sass'],
+	extract: false,
+	minimize: true,
+	use: [
+		['sass', {
+			includePaths: [
+			'./src/theme',
+			'./node_modules',
+			// This is only needed because we're using a local module. :-/
+			// Normally, you would not need this line.
+			path.resolve(__dirname, '..', 'node_modules')
+			]
+		}]
+	]
+});
 
 export default {
 	input: 'src/main.js',
@@ -46,7 +64,8 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		postcss(postcssOptions())
 	],
 	watch: {
 		clearScreen: false

@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+
     let active;
     let recovered;
     let countries = [];
@@ -34,9 +35,20 @@
 </script>
 
 <style>
-    div {
+    .card-container {
         background-color: #5f80ff;
         min-height: 650px;
+    }
+
+    .search-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    button {
+        background-color: #ef5b25;
+        color: #efefef;
     }
 
     h1 {
@@ -48,14 +60,14 @@
         padding-top: 6rem;
     }
 
-    .container {
+    .article-container {
         display: flex;
         flex-direction: row;
     }
 
     article {
         width: 350px;
-        height: 350px;
+        height: 300px;
         border: 1px solid #efefef;
         border-radius: 20px;
         background: #fff;
@@ -63,7 +75,8 @@
     }
 
     h2 {
-        font-weight: 400;
+        font-size: 1.5rem;
+        font-weight: bold;
         text-align: center;
         color: #ef5b25;
         border-bottom: 1px solid #515151;
@@ -71,8 +84,8 @@
     }
 
     p {
-        font-size: 2rem;
-        font-weight: 200;
+        font-size: 4rem;
+        font-weight: 300;
         text-align: center;
     }
 
@@ -81,31 +94,46 @@
         border-radius: 4px;
         padding: 12px 52px 12px 16px;
         display: flex;
-        width: 90%;
-        margin: 2rem auto;
+        margin-right: 1rem;
     }
 
     @media (max-width: 640px) {
-        .container {
+        select,
+        button {
+            margin: 1rem;
+        }
+        .search-bar, 
+        .article-container {
             flex-direction: column;
         }
 
         article {
             width: 250px;
+            margin: 3rem auto;
+        }
+
+        p {
+            font-size: 3rem;
         }
     }
 </style>
 
-<div>
+<div class="card-container">
     <h1>View Cases By Country</h1>
-    <div class="container">
+    <div class="search-bar">
+        <select bind:value={selected} id="countries" >
+            {#each countries as {Slug, Country}}
+                <option value={Slug}>{Country}</option>
+            {/each}
+        </select>
+        <button on:click={getCountryData(selected)} class="button">
+            View country data
+        </button>
+    </div>
+    <div class="article-container">
         <article>
             <h2>Active Cases</h2>
-            <select bind:value={selected} id="countries" on:change={getCountryData(selected)}>
-                {#each countries as {Slug, Country}}
-                    <option value={Slug}>{Country}</option>
-                {/each}
-            </select>
+            
             <p>{active}</p>
         </article>
         <article>

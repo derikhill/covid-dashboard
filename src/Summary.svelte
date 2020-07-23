@@ -1,5 +1,4 @@
 <script>
-
     let newCases;
     let totalCases;
     let newDeaths;
@@ -34,19 +33,19 @@
     div {
         display: flex;
         flex-direction: column;
-        margin: 3rem auto 5rem;
+        margin: 0 auto 5rem;
     }
 
     h4, p {
         color: #5f80ff;
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 2rem;
         text-align: center;
         margin-bottom: 0.5rem;
     }
 
     .totals {
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: 200;
         text-align: center;
         margin-top: 0;
@@ -90,7 +89,7 @@
         </p>
     {:else}
         <h4>
-            Total confirmed cases:
+            Total Cases:
         </h4>
         <p class="totals">
             {totalCases}
