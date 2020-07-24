@@ -1,25 +1,45 @@
 <script>
 	import Summary from './Summary.svelte';
 	import Card from './Card.svelte';
-		import Login from './Login.svelte';
+	import Login from './Login.svelte';
 	import {firebaseauth} from './service/firebase.js';
-	import * as firebase from "firebase/app";
+	import firebase from "firebase/app";
+
+	let user = { loggedIn: false };
 
 	function handleAuth(event) {
 		const provider = event.detail.provider;
 		const authProvider = new firebase.auth[`${provider}AuthProvider`]();
 		
-        firebase
-            .auth()
-			.signInWithPopup(authProvider)
-			.then( result => {
-				console.log(result.user);
-				//TODO: Handle button or message showing logged in
+		if (!user.loggedIn) {
+			firebase
+				.auth()
+				.signInWithPopup(authProvider)
+				.then( result => {
+					console.log(result.user);
+					//TODO: Handle button or message showing logged in
+					user.loggedIn = true;
+				})
+		} else {
+			firebase.auth().signOut()
+				.then( result => {
+					console.log(result);
+					user.loggedIn = false;
 			})
+		}
 	}
+	
+	function toggleLogin() {
+		user.loggedIn = !user.loggedIn;
+	}
+
 </script>
 
-<Login on:auth={handleAuth}/>
+{#if !user.loggedIn}
+	<Login on:auth={handleAuth} text={"Login with Github"}/>
+{:else}
+	<Login on:auth={handleAuth} text={"Log Out"}/>
+{/if}
 
 <main>
 	<h1>COVID-19 Cases Summary</h1>

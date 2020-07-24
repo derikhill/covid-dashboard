@@ -1,6 +1,8 @@
 <script>
     import { createEventDispatcher } from 'svelte';
 
+    export let text;
+
 	const dispatch = createEventDispatcher();
 
     function authProvider(provider) {
@@ -18,6 +20,6 @@
 <div>
 <!-- could add more buttons for different authentication -->
     <button className="github" on:click={ () => authProvider('Github')}>
-        Login with Github
+        {text}
     </button>
 </div>

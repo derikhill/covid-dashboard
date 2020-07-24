@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import { fly } from 'svelte/transition'
 
     let active;
     let recovered;
@@ -131,12 +132,11 @@
     <div class="article-container">
         <article>
             <h4>Active Cases</h4>
-            
-            <h3 class="totals">{active}</h3>
+            <h3 class="totals" transition:fly="{{y: 100, duration: 1500}}">{active}</h3>
         </article>
         <article>
             <h4>Recovered Cases</h4>
-            <h3 class="totals">{recovered}</h3>
+            <h3 class="totals" transition:fly="{{y: 100, duration: 1500}}">{recovered}</h3>
         </article>
     </div>
 </div>
