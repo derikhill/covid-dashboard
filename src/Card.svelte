@@ -26,8 +26,8 @@
                 return
             }
             data.forEach( cases => {
-                active = cases.Active;
-                recovered = cases.Recovered;
+                active = cases.Active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                recovered = cases.Recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             })
         })
     }
@@ -48,7 +48,6 @@
 
     button {
         background-color: #ef5b25;
-        color: #efefef;
     }
 
     h1 {
@@ -74,8 +73,7 @@
         margin: 5rem auto;
     }
 
-    h2 {
-        font-size: 1.5rem;
+    h4 {
         font-weight: bold;
         text-align: center;
         color: #ef5b25;
@@ -83,7 +81,7 @@
         padding-bottom: 0.75rem;
     }
 
-    p {
+    .totals {
         font-size: 4rem;
         font-weight: 300;
         text-align: center;
@@ -112,7 +110,7 @@
             margin: 3rem auto;
         }
 
-        p {
+        .totals {
             font-size: 3rem;
         }
     }
@@ -132,13 +130,13 @@
     </div>
     <div class="article-container">
         <article>
-            <h2>Active Cases</h2>
+            <h4>Active Cases</h4>
             
-            <p>{active}</p>
+            <h3 class="totals">{active}</h3>
         </article>
         <article>
-            <h2>Recovered Cases</h2>
-            <p>{recovered}</p>
+            <h4>Recovered Cases</h4>
+            <h3 class="totals">{recovered}</h3>
         </article>
     </div>
 </div>

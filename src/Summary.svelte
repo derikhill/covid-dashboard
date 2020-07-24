@@ -19,12 +19,12 @@
     fetch('https://api.covid19api.com/summary', options)
     .then(response => response.json())
     .then(data => {
-        newCases = data.Global.NewConfirmed;
-        totalCases = data.Global.TotalConfirmed;
-        newDeaths = data.Global.NewDeaths;
-        totalDeaths = data.Global.TotalDeaths;
-        newRecovered = data.Global.NewRecovered;
-        totalRecovered = data.Global.TotalRecovered;
+        newCases = data.Global.NewConfirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        totalCases = data.Global.TotalConfirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        newDeaths = data.Global.NewDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        totalDeaths = data.Global.TotalDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        newRecovered = data.Global.NewRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        totalRecovered = data.Global.TotalRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     })
 
 </script>
@@ -36,10 +36,9 @@
         margin: 0 auto 5rem;
     }
 
-    h4, p {
+    h3, p {
         color: #5f80ff;
         font-weight: bold;
-        font-size: 2rem;
         text-align: center;
         margin-bottom: 0.5rem;
     }
@@ -54,55 +53,45 @@
 
     button {
         margin: auto;
-        font-size: 0.875rem;
-        line-height: 2.5;
-        font-weight: 500;
-        text-transform: uppercase;
-        border-radius: 25px;
-        padding: 0 24px;
-        border: 1px solid #676778;
-        background: #676778;
-        color: #f1f1f1;
-        cursor: pointer;
     }
 </style>
 
 <div>
     {#if number.total}
-        <h4>
+        <h3>
             New Cases:
-        </h4>
+        </h3>
         <p class="totals">
             {newCases}
         </p >
-        <h4>
+        <h3>
             New Deaths:
-        </h4>
+        </h3>
         <p class="totals">
             {newDeaths}
         </p>
-        <h4>
+        <h3>
             New Recoveries:
-        </h4>
+        </h3>
         <p class="totals">
             {newRecovered}
         </p>
     {:else}
-        <h4>
+        <h3>
             Total Cases:
-        </h4>
+        </h3>
         <p class="totals">
             {totalCases}
         </p>
-        <h4>
+        <h3>
             Total Deaths:
-        </h4>
+        </h3>
         <p class="totals">
             {totalDeaths}
         </p>
-        <h4>
+        <h3>
             Total Recoveries:
-        </h4>
+        </h3>
         <p class="totals">
             {totalRecovered}
         </p>

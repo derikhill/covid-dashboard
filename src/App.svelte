@@ -38,13 +38,17 @@
 	h1 {
 		color: #5f80ff;
 		text-transform: uppercase;
-		font-size: 3em;
+		font-size: 2em;
 		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
+		}
+
+		h1 {
+			font-size: 3rem;
 		}
 	}
 </style>

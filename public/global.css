@@ -48,8 +48,16 @@ input[type="range"] {
 }
 
 button {
-	color: #333;
-	background-color: #f4f4f4;
+	font-size: 0.875rem;
+	line-height: 2.5;
+	font-weight: 500;
+	text-transform: uppercase;
+	border-radius: 25px;
+	padding: 0 24px;
+	border: 1px solid #676778;
+	background: #676778;
+	color: #f1f1f1;
+	cursor: pointer;
 	outline: none;
 }
 
@@ -63,4 +71,62 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+
+h2 {
+	font-size: 1.25rem;
+}
+
+h3 {
+	font-size: 1.1875rem;
+}
+
+h4 {
+	font-size: 1.125rem;
+}
+
+h5 {
+	font-size: 1.0625rem;
+}
+
+h6 {
+	font-size: 1rem;
+}
+
+p {
+	font-size: 1rem;	
+}
+
+@media screen and (min-width: 641px) {
+	h1 {
+		font-size: 3rem;
+	}
+	
+	h2 {
+		font-size: 2.5rem;
+	}
+	
+	h3 {
+		font-size: 1.975rem;
+	}
+	
+	h4 {
+		font-size: 1.625rem;
+	}
+	
+	h5 {
+		font-size: 1.25rem;
+	}
+	
+	h6 {
+		font-size: 1rem;
+	}
+	
+	p {
+		font-size: 1rem;	
+	}
 }

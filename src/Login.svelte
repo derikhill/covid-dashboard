@@ -12,9 +12,7 @@
 </script>
 
 <style>
-    button {
-        cursor: pointer;
-    }
+    
 </style>
 
 <div>
