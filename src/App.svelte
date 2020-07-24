@@ -2,6 +2,7 @@
 	import Summary from './Summary.svelte';
 	import Card from './Card.svelte';
 	import Login from './Login.svelte';
+	import TableData from './TableData.svelte';
 	import {firebaseauth} from './service/firebase.js';
 	import firebase from "firebase/app";
 
@@ -16,23 +17,18 @@
 				.auth()
 				.signInWithPopup(authProvider)
 				.then( result => {
-					console.log(result.user);
+					console.log(result.user.displayName);
 					//TODO: Handle button or message showing logged in
 					user.loggedIn = true;
 				})
 		} else {
 			firebase.auth().signOut()
-				.then( result => {
-					console.log(result);
+				.then( () => {
 					user.loggedIn = false;
 			})
 		}
 	}
 	
-	function toggleLogin() {
-		user.loggedIn = !user.loggedIn;
-	}
-
 </script>
 
 {#if !user.loggedIn}
@@ -47,6 +43,7 @@
 
 <Summary />
 <Card />
+<TableData />
 
 <style>
 	main {
