@@ -10,13 +10,19 @@ The current version shows a summary at the start of the page which displays tota
 
 This section currently has two sections that show active cases and recovered cases. By default it loads with United States as the active data. There is a dropdown which will fetch the data for the new selected country. If no records are available a message shows that as well.
 
-##### TODO
-
-I plan to add more functionality, clean up the design, and will try to incorporate an auth login if time permits. 
-
 ### Install
 
 To run locally: 
 - First clone the project
 - Then install dependencies > npm install
 - Finally > npm run dev
+
+### Visit
+
+This project is being hosted with [Surge.sh](https://surge.sh)
+
+You can view the project at [silent-pies.surge.sh](silent-pies.surge.sh)
+
+There is a valid auth handler working using Github credentials as a login process. 
+
+Currently, the button just transitions to show "Login" or "Log out", no hidden features when not logged in.
