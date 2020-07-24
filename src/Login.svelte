@@ -1,12 +1,25 @@
 <script>
-    import * as firebase from 'firebase/app';
-    import Button from '@smui/button';
+    import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
+    function authProvider(provider) {
+        dispatch('auth', {
+            provider: provider
+        })
+    }
+
 </script>
 
 <style>
-
+    button {
+        cursor: pointer;
+    }
 </style>
 
-<Button>
-
-</Button>
+<div>
+<!-- could add more buttons for different authentication -->
+    <button className="github" on:click={ () => authProvider('Github')}>
+        Login with Github
+    </button>
+</div>
