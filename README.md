@@ -21,7 +21,7 @@ To run locally:
 
 This project is being hosted with [Surge.sh](https://surge.sh)
 
-You can view the project at [silent-pies.surge.sh](silent-pies.surge.sh)
+You can view the project at [silent-pies.surge.sh](https://silent-pies.surge.sh)
 
 There is a valid auth handler working using Github credentials as a login process. 
 
