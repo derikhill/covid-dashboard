@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-	import Tab, {Icon, Label} from '@smui/tab';
+	  import Tab, {Icon, Label} from '@smui/tab';
     import TabBar from '@smui/tab-bar';
     import DataTable, {Body, Row, Cell} from '@smui/data-table';
 
@@ -11,12 +11,12 @@
     let recovered;
     let deaths;
 
-    // onMount( 
-    //     getCountryData(slug)
-    // )
+    onMount( async () => {
+      await getTableData('United States');
+    })
 
-    function getCountryData(slug) {
-        slug === 'United States' ? slug = 'united-states' : (slug === 'United Kingdom' ? slug = 'united kingdom' : 'china');
+    function getTableData(slug) {
+        slug === 'United States' ? slug = 'united-states' : (slug === 'United Kingdom' ? slug = 'united-kingdom' : 'china');
         fetch(`https://api.covid19api.com/total/dayone/country/${slug}`)
         .then(response => response.json())
         .then(data => {
@@ -28,7 +28,6 @@
             })
         })
     }
-
 </script>
 
 
